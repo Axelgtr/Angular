@@ -10,30 +10,22 @@ var aplicacion=angular.module('aplicacionsita',[]);
 
 //Definimos un controlador para comunicarnos con el index.html
 aplicacion.controller('controladorPrincipal',function ($scope, $http){
-    //Creamos un modelo simple.
-    //scope.- alcance
+    //Creamos un modelo simple
+    
     $scope.mensajito='Hola desde angular!!!';
     $scope.nombre='';
     $scope.algo='';
-    $scope.gCentigrados='';
-    $scope.convertir='';
-    $scope.centi= function (){
-      $scope.convertir= (gCentigrados*1.8)+32,'resultado';
+    $scope.diacorte='';
+    
+    $scope.apachurrame = function (){
+        $scope.algo='haz apachurrado el boton!!!';
     };
     
-    $scope.apachurrame= function(){
-        $scope.algo='haz apachurrado el boton';
-    };
-    
-    
-    $scope.guaradarProducto=function(){
-      //Enviamos informacion a travez de rest.
-      $http.post('http://localhost:9000/producto/pinguinos/10/25').success(function (datos){
-              console.log(datos)
-        
-    });
-   
-   };
-});
-
-
+    $scope.guardar=function(){
+        $http.post('http//localhost:9000/tarjeta/'+
+                $scope.nombre+'/'+$scope.diacorte).success(function(data){
+                    console.log(data);
+                });
+            };
+            }
+            );
