@@ -1,44 +1,151 @@
+
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html ng-app="aplicacionsita">
+<html ng-app="appicacionsita">
     <head>
-        <title>JAVA 3 SPRING</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Cargamos bootstrap -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>JAVA 3 SPRING</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="" rel="stylesheet">
+  </head>
+    <body>
+    <div ng-controller="controlador">
+    <h2>GUARDAR</h2>
+    <form role="form" ng-submit="guardarT()">
+    <div class="form-group">
+    <input type="text" placeholder="Nombre" class="form-control" id="nombre" name="nombre" ng-model="tarjeta.NOMBRE"/>
+    </div>
+    <div class="form-group">
+    <input type="text" placeholder="Dia de corte" class="form-control" id="diaCorte" name="diaCorte" ng-model="tarjeta.DIACORTE"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 
 
-    <!-- JS -->
-    <!--cargamos angular y jquery -->
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-    <script src="js/angular.js"></script>
+
+    <table class="table table-bordered">
+    <thead>
+    <tr class="success">
+    <th>Id tarjeta</th>
+    <th>Nombre de Tarjeta</th>
+    <th>Dia de corte</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="tarjeta in tarjetas">
+    <td>{{tarjeta.ID_TARJETA}}</td>
+    <td>{{tarjeta.NOMBRE}}</td>
+    <td>{{tarjeta.DIACORTE}}</td>
+    </tr>
+    </tbody>
+    </table>
+    <table class="table">
+    <thead>
+    <tr class="success">
+    <th>Id tarjeta</th>
+    <th>Nombre tarjeta</th>
+    <th>Dia de corte</th>
+    <th>Actualizar</th>
+    <th>Borrar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="tarjeta in tarjetas">
+    <td><input type="number" class="form-control" id="tarjetaId" name="tarjetaId" ng-model="tarjeta.ID_TARJETA"/></td>
+    <td><input type="text" class="form-control" id="nombre" name="nombre" ng-model="tarjeta.NOMBRE"/></td>
+    <td><input type="number" class="form-control" id="diaCorte" name="diaCorte" ng-model="tarjeta.DIACORTE"/></td>
+    <td><button ng-click="actualizarT(tarjeta)" class="btn btn-primary">actualizarT</button></td>
+    <td><button ng-click="borrarT(tarjeta)" class="btn btn-danger">borrarT</button></td>
+
+    </tr>
+    </tbody>
+    </table>
+    <h2>Guardar</h2>
+    <form role="form" ng-submit="guardarT()">
+    <div class="form-group">
+    <input type="text" placeholder="Tarjeta ID" class="form-control" id="IdTarjeta" name="tarjetaId" ng-model="gasto.IdTarjeta"/>
+    </div>
+    <div class="form-group">
+    <input type="text" placeholder="Concepto" class="form-control" id="concepto" name="concepto" ng-model="gasto.concepto"/>
+    </div>
+    <div class="form-group">
+    <input type="date" placeholder="Fecha" class="form-control" id="fecha" name="fecha" ng-model="gasto.fecha"/>
+    </div>
+    <div class="form-group">
+    <input type="number" placeholder="Cantidad" class="form-control" id="cantidad" name="cantidad" ng-model="gasto.cantidad"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <table class="table">
+    <thead>
+    <tr class="success">
+    <th>Id tarjeta</th>
+    <th>Nombre</th>
+    <th>Dia de Corte</th>
+    <th>Id gasto</th>
+    <th>Concepto</th>
+    <th>Fecha</th>
+    <th>Cantidad</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="gasto in gastos">
+    <td>{{gasto.IdTarjeta.ID_TARJETA}}</td>
+    <td>{{gasto.IdTarjeta.NOMBRE}}</td>
+    <td>{{gasto.IdTarjeta.DIACORTE}}</td>
+    <td>{{gasto.IdGastos}}</td>
+    <td>{{gasto.concepto}}</td>
+    <td>{{gasto.fecha}}</td>
+    <td>{{gasto.cantidad}}</td>
+
+    </tr>
+    </tbody>
+    </table>
+    <table class="table">
+    <thead>
+    <tr class="success">
+    <th>Id tarjeta</th>
+    <th>Id gasto</th>
+    <th>Concepto</th>
+    <th>Fecha</th>
+    <th>Cantidad</th>
+    <th>Actualizar</th>
+    <th>Borrar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="gasto in gastos">
+    <td><input type="number" class="form-control" id="tarjetaId" name="tarjetaId" ng-model="gasto.IdTarjeta.IdTarjeta"/></td>
+    <td><input type="number" class="form-control" id="gastosId" name="gastosId" ng-model="gasto.IdGastos"/></td>
+    <td><input type="text" class="form-control" id="concepto" name="concepto" ng-model="gasto.concepto"/></td>
+    <td><input type="text" class="form-control" id="fecha" name="fecha" ng-model="gasto.fecha"/></td>
+    <td><input type="number" class="form-control" id="cantidad" name="cantidad" ng-model="gasto.cantidad"/></td>
+    <td><button ng-click="actualizarGasto(gasto)" class="btn btn-primary">actualizarT</button></td>
+    <td><button ng-click="borrarGasto(gasto)" class="btn btn-danger">borrarT</button></td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
     <script src="js/app.js"></script>
-    </head>
-    <body ng-controller="controladorPrincipal">
-        {{mensajito}}
-        <br>
-        <p>Escribe algo</p>
-        <input type="text" ng-model="nombre">
-        {{nombre}}
-        <h2>Manejo de eventos de boton con Angular!</h2>
-        <button class="btn btn-primary" ng-click="apachurrame">Apachurra el boton</button>
-        {{algo}}
-        <br><br>
-        <p>Ingresa.</p>
-        <input type="text" ng-model="gCentigrados"><br>
-        <button class="btn btn-primary" ng-click="centi">Transformar</button>
-        {{convertir}}
-        <br><br>
-        
-        <h2>Introduce los datos del producto de gallina</h2>
-        <input type="text" placeholder="Nombre del producto">
-        <input type="text" placeholder="Costo del producto">
-        <input type="text" placeholder="Numero de unidades">
-        <button class="btn btn-success">Guardar Producto</button>
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
     </body>
 </html>
+
